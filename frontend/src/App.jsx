@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 
-const API = "http://127.0.0.1:8000";
+const API = "https://collegerank-ai-api.onrender.com";
 
 const EXAMS = [
   "JEE Main",
@@ -109,7 +109,7 @@ export default function App() {
     } catch (err) {
       setError(
         err.message?.includes("fetch")
-          ? "Cannot connect to the backend. Start FastAPI at http://127.0.0.1:8000."
+          ? "Cannot connect to the CollegeRank AI server. Please try again shortly."
           : err.message || "Something went wrong. Please try again."
       );
     } finally {
