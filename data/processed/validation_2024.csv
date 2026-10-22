@@ -1,0 +1,47 @@
+year,round,institute_type,institute,academic_program,quota,seat_type,gender,opening_rank,closing_rank,cutoff_range
+2024,2,IIT,Indian Institute  of Technology Bhubaneswar,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,2389,3454,1065
+2024,2,IIT,Indian Institute  of Technology Bhubaneswar,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),4833,7457,2624
+2024,2,IIT,Indian Institute  of Technology Bombay,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,1,68,67
+2024,2,IIT,Indian Institute  of Technology Bombay,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),7,421,414
+2024,2,IIT,Indian Institute  of Technology Mandi,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,1803,2909,1106
+2024,2,IIT,Indian Institute  of Technology Mandi,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),6049,6667,618
+2024,2,IIT,Indian Institute  of Technology Delhi,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,27,116,89
+2024,2,IIT,Indian Institute  of Technology Delhi,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),39,556,517
+2024,2,IIT,Indian Institute  of Technology Indore,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,823,1354,531
+2024,2,IIT,Indian Institute  of Technology Indore,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),2828,4069,1241
+2024,2,IIT,Indian Institute  of Technology Kharagpur,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,226,414,188
+2024,2,IIT,Indian Institute  of Technology Kharagpur,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),1172,1579,407
+2024,2,IIT,Indian Institute  of Technology Hyderabad,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,431,652,221
+2024,2,IIT,Indian Institute  of Technology Hyderabad,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),1709,1809,100
+2024,2,IIT,Indian Institute  of Technology Jodhpur,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,2062,2859,797
+2024,2,IIT,Indian Institute  of Technology Jodhpur,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),5655,6587,932
+2024,2,IIT,Indian Institute  of Technology Kanpur,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,120,250,130
+2024,2,IIT,Indian Institute  of Technology Kanpur,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),781,1117,336
+2024,2,IIT,Indian Institute  of Technology Madras,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,76,159,83
+2024,2,IIT,Indian Institute  of Technology Madras,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),558,757,199
+2024,2,IIT,Indian Institute  of Technology Gandhinagar,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,654,1633,979
+2024,2,IIT,Indian Institute  of Technology Gandhinagar,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),2427,4592,2165
+2024,2,IIT,Indian Institute  of Technology Patna,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,1760,3074,1314
+2024,2,IIT,Indian Institute  of Technology Patna,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),4695,7171,2476
+2024,2,IIT,Indian Institute  of Technology Roorkee,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,277,481,204
+2024,2,IIT,Indian Institute  of Technology Roorkee,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),1270,1697,427
+2024,2,IIT,Indian Institute  of Technology (ISM) Dhanbad,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,1817,3610,1793
+2024,2,IIT,Indian Institute  of Technology (ISM) Dhanbad,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),5560,8100,2540
+2024,2,IIT,Indian Institute  of Technology Ropar,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,1158,2258,1100
+2024,2,IIT,Indian Institute  of Technology Ropar,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),3461,5385,1924
+2024,2,IIT,Indian Institute  of Technology (BHU) Varanasi,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,619,1043,424
+2024,2,IIT,Indian Institute  of Technology (BHU) Varanasi,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),2562,4130,1568
+2024,2,IIT,Indian Institute  of Technology Guwahati,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,466,612,146
+2024,2,IIT,Indian Institute  of Technology Guwahati,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),1788,2095,307
+2024,2,IIT,Indian Institute of Technology Bhilai,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,3471,5932,2461
+2024,2,IIT,Indian Institute of Technology Bhilai,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),10240,11544,1304
+2024,2,IIT,Indian Institute of Technology Goa,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,3758,4654,896
+2024,2,IIT,Indian Institute of Technology Goa,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),8906,10895,1989
+2024,2,IIT,Indian Institute  of Technology Palakkad,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,4513,5556,1043
+2024,2,IIT,Indian Institute  of Technology Palakkad,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),8303,9127,824
+2024,2,IIT,Indian Institute  of Technology Tirupati,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,1915,4522,2607
+2024,2,IIT,Indian Institute  of Technology Tirupati,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),5737,6324,587
+2024,2,IIT,Indian Institute of Technology Jammu,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,3412,5555,2143
+2024,2,IIT,Indian Institute of Technology Jammu,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),8353,11138,2785
+2024,2,IIT,Indian Institute of Technology Dharwad,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Gender-Neutral,3482,5601,2119
+2024,2,IIT,Indian Institute of Technology Dharwad,"Computer Science and Engineering (4 Years, Bachelor of Technology)",AI,OPEN,Female-only (including Supernumerary),4989,10958,5969
