@@ -7,7 +7,7 @@ import pandas as pd
 
 from app.schemas.prediction import PredictionRequest, PredictionResponse
 from app.ml.predictor import JEEModelPredictor
-
+from app.services.hybrid_predictor import calculate_hybrid_cutoffs
 
 class PredictionService:
     def __init__(self):
@@ -36,6 +36,19 @@ class PredictionService:
 
     def predict(self, request: PredictionRequest) -> PredictionResponse:
         exam = request.exam.strip().lower()
+
+        # The current collected datasets support Round 2 only.
+        if request.round is not None and request.round != 2:
+            return PredictionResponse(
+                exam=request.exam,
+                model_available=False,
+                message=(
+                    "The current dataset supports counselling Round 2 only. "
+                    "Other rounds are not available until verified data "
+                    "and a tested prediction model are added."
+                ),
+                predictions=[],
+            )
 
         if exam == "jee main":
             return self._predict_jee_main(request)
@@ -195,12 +208,19 @@ class PredictionService:
             "quota", "seat_type", "gender", "year", "round", "opening_rank",
         ]
 
-        predicted = np.maximum(
-            1,
-            np.rint(
-                self.main_model.predict(prediction_rows[feature_columns])
-            ),
-        ).astype(int)
+        # Generate the existing Random Forest predictions.
+        rf_predictions = self.main_model.predict(
+            prediction_rows[feature_columns]
+        )
+
+        # Combine RF predictions with eligible historical cutoffs.
+        # The helper excludes records from the prediction year and future years.
+        predicted = calculate_hybrid_cutoffs(
+            prediction_rows=prediction_rows,
+            historical_data=df,
+            rf_predictions=rf_predictions,
+            rf_weight=0.75,
+        )
 
         prediction_rows["predicted_cutoff"] = predicted
 
