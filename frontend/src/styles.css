@@ -635,3 +635,24 @@ form > .secondary-button:hover {
     scroll-behavior: auto !important;
   }
 }
+
+.cutoff-warning {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1px solid #f0cf8a;
+  border-radius: 12px;
+  background: #fff8e8;
+  color: #744b08;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.cutoff-warning strong {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.cutoff-warning p {
+  margin: 0;
+}

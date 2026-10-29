@@ -308,14 +308,14 @@ export default function App() {
             </button>
           </form>
         </section>
-
         <section className="results-section">
           <div className="results-heading">
             <div>
               <div className="eyebrow">STEP 02</div>
               <h2>Prediction results</h2>
-              <p>Review estimated cutoffs and each college's details.</p>
+              <p>Review model-estimated cutoffs and each college's details.</p>
             </div>
+
             {results.length > 0 && (
               <div className="result-count">{results.length} options</div>
             )}
@@ -347,13 +347,13 @@ export default function App() {
               </h3>
               <p>
                 {searched
-                  ? "Try reviewing your category, gender, branch, quota, or rank. Results depend on the records available in the current dataset."
+                  ? "Review your category, gender, branch, quota, or rank. Results depend on the records available in the current dataset."
                   : "Enter your details and select Explore college options to view the available model estimates."}
               </p>
             </div>
           )}
 
-          {!loading && results.length > 0 && (
+          {!loading && !error && results.length > 0 && (
             <>
               {message && (
                 <div className="notice results-notice">{message}</div>
@@ -363,52 +363,102 @@ export default function App() {
                 {results.map((result, index) => {
                   const cutoff = Number(result.predicted_cutoff);
                   const rank = Number(form.rank);
+
                   const comparable =
-                    Number.isFinite(cutoff) && cutoff > 0 && rank > 0;
+                    Number.isFinite(cutoff) &&
+                    cutoff > 0 &&
+                    Number.isInteger(rank) &&
+                    rank > 0;
+
                   const withinCutoff = comparable && rank <= cutoff;
 
+                  const historicalCutoff = Number(result.historical_cutoff);
+
+                  const hasHistoricalCutoff =
+                    result.historical_cutoff != null &&
+                    Number.isFinite(historicalCutoff) &&
+                    historicalCutoff > 0;
+
+                  const cutoffDifference =
+                    hasHistoricalCutoff && comparable
+                      ? Math.round(cutoff - historicalCutoff)
+                      : null;
+
+                  const significantDifference =
+                    cutoffDifference !== null &&
+                    Math.abs(cutoffDifference) / historicalCutoff >= 0.2;
+
+                  const cutoffStatus = !comparable
+                    ? "Comparison unavailable"
+                    : withinCutoff
+                      ? "Numerically within estimated range"
+                      : "Beyond estimated closing rank";
+
+                  const cutoffExplanation = !comparable
+                    ? "There is insufficient valid cutoff data to compare your rank."
+                    : withinCutoff
+                      ? "Your rank falls within the model-estimated closing-rank comparison. This is not an admission prediction or guarantee. Verify official counselling cutoffs and eligibility rules."
+                      : "Your rank is numerically beyond the model-estimated closing rank. Explore other colleges and branches, and verify official counselling cutoffs and eligibility rules.";
                   return (
                     <article
                       className="result-card"
-                      key={`${result.college}-${index}`}
+                      key={`${result.college || "college"}-${result.branch || "branch"}-${index}`}
                     >
                       <div className="result-card-top">
                         <span className="rank-label">
                           OPTION {String(index + 1).padStart(2, "0")}
                         </span>
+
                         <span
                           className={`status-pill ${
-                            withinCutoff ? "status-within" : "status-review"
+                            !comparable
+                              ? "status-review"
+                              : withinCutoff
+                                ? "status-within"
+                                : "status-review"
                           }`}
                         >
-                          {comparable
-                            ? withinCutoff
-                              ? "Within estimated cutoff"
-                              : "Beyond estimated cutoff"
-                            : "Estimate unavailable"}
+                          {cutoffStatus}
                         </span>
                       </div>
 
-                      <h3>{result.college}</h3>
-                      <p className="branch-name">{result.branch}</p>
+                      <h3>{result.college || "College name unavailable"}</h3>
+                      <p className="branch-name">
+                        {result.branch || "Branch details unavailable"}
+                      </p>
 
                       <div className="cutoff-box">
-                        <span>Estimated closing rank</span>
+                        <span>Model-estimated closing rank</span>
                         <strong>
                           {comparable
                             ? Math.round(cutoff).toLocaleString("en-IN")
                             : "N/A"}
                         </strong>
                         <small>
-                          Model estimate, not an admission guarantee
+                          Historical-data-based estimate, not an admission guarantee
                         </small>
                       </div>
+                      {significantDifference && (
+                        <div className="cutoff-warning">
+                          <strong>Review this estimate</strong>
+                          <p>
+                            The model-estimated closing rank is{" "}
+                            {Math.abs(cutoffDifference).toLocaleString("en-IN")} ranks{" "}
+                            {cutoffDifference < 0 ? "lower" : "higher"} than the
+                            latest historical cutoff (
+                            {historicalCutoff.toLocaleString("en-IN")}).
+                            This difference warrants caution and does not indicate
+                            your probability of admission.
+                          </p>
+                        </div>
+                      )}
 
                       <div className="metrics-grid">
                         <div>
                           <span>Historical cutoff</span>
                           <strong>
-                            {result.historical_cutoff != null
+                            {result.historical_cutoff != null &&
+                            Number.isFinite(Number(result.historical_cutoff))
                               ? Number(result.historical_cutoff).toLocaleString(
                                   "en-IN",
                                   { maximumFractionDigits: 0 }
@@ -416,15 +466,16 @@ export default function App() {
                               : "N/A"}
                           </strong>
                         </div>
+
                         <div>
                           <span>Previous-year cutoff</span>
                           <strong>
-                            {result.previous_year_cutoff != null
-                              ? Number(
-                                  result.previous_year_cutoff
-                                ).toLocaleString("en-IN", {
-                                  maximumFractionDigits: 0,
-                                })
+                            {result.previous_year_cutoff != null &&
+                            Number.isFinite(Number(result.previous_year_cutoff))
+                              ? Number(result.previous_year_cutoff).toLocaleString(
+                                  "en-IN",
+                                  { maximumFractionDigits: 0 }
+                                )
                               : "N/A"}
                           </strong>
                         </div>
@@ -437,16 +488,25 @@ export default function App() {
 
                       <p className="explanation">
                         {result.explanation ||
-                          "This estimate is based on the available historical records."}
+                          "This estimate is based on available historical records."}
                       </p>
 
                       <p className="comparison-note">
-                        {comparable
-                          ? withinCutoff
-                            ? "Your entered rank is numerically at or better than this estimated cutoff. Admission is not guaranteed."
-                            : "Your entered rank is numerically beyond this estimated cutoff. This comparison does not determine eligibility."
-                          : "There is insufficient cutoff data to compare your rank."}
+                        {cutoffExplanation}
                       </p>
+
+                      {result.prediction_score != null &&
+                        Number.isFinite(Number(result.prediction_score)) && (
+                          <div className="trend-row">
+                            <span>Model comparison score</span>
+                            <strong>
+                              {Number(result.prediction_score).toFixed(3)}
+                            </strong>
+                            <small>
+                              This score is not the probability of admission.
+                            </small>
+                          </div>
+                        )}
                     </article>
                   );
                 })}
@@ -455,14 +515,16 @@ export default function App() {
           )}
 
           <div className="disclaimer">
-            <strong>Important:</strong> These are experimental historical
-            machine-learning estimates, not admission probabilities or
-            guarantees. Actual allotments depend on official counselling
-            rules, seat availability, category, quota, gender pool, round,
-            preferences, and current-year cutoffs. Always verify details using
-            the official counselling authority.
+            <strong>Important:</strong> These are experimental machine-learning
+            estimates based on available historical cutoff data. They are not
+            admission probabilities or guarantees. A rank comparison alone does
+            not establish admission eligibility. Actual allotments depend on
+            official counselling rules, seat availability, category, quota,
+            gender pool, round, preferences, and current-year cutoffs. Verify
+            all details with the official counselling authority.
           </div>
         </section>
+
       </main>
 
       <footer className="site-footer">
